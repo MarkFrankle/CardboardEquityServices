@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Cardboard Equity service definition
+  
+Globals:
+  Function:
+    # 5 second timeout
+    Timeout: 5
+
+Resources:
+  cardGet:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: cards
+      Handler: get.lambdaHandler
+      Runtime: nodejs8.10
+      Events:
+        cardboard-equity:
+          Type: Api 
+          Properties:
+            Path: /cards
+            Method: get
+  cardPut:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: cards
+      Handler: put.lambdaHandler
+      Runtime: nodejs8.10
+      Events:
+        cardboard-equity:
+          Type: Api 
+          Properties:
+            Path: /cards
+            Method: put
