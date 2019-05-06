@@ -34,9 +34,9 @@ exports.lambdaHandler = async (event, context) => {
   //       Should I handle a database miss on the receiving side?
   return docClient.get(params).promise()
     .then(data => ({ statusCode: 200, body: JSON.stringify(data) }))
-    .catch(() => ({
+    .catch(error => ({
       statusCode: 500,
-      error: 'Could not fetch: ${error.stack}',
+      error: `Could not fetch: ${error.stack}`,
     }));
 };
 

@@ -6,7 +6,6 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
-// eslint-disable-next-line no-unused-vars
 exports.lambdaHandler = async (event, context) => {
   const id = event.queryStringParameters.scryfallid;
   const { name } = event.queryStringParameters;
@@ -23,6 +22,6 @@ exports.lambdaHandler = async (event, context) => {
     .then(result => ({ statusCode: 200, body: JSON.stringify(result) }))
     .catch(error => ({
       statusCode: 500,
-      error: 'Could not insert: ${error.stack}',
+      error: `Could not insert: ${error.stack}`,
     }));
 };
