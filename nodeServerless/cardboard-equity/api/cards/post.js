@@ -8,8 +8,6 @@ let docClient = new AWS.DynamoDB.DocumentClient();
 exports.lambdaHandler = async (event, context) => {
     var id = event.queryStringParameters.scryfallid;
     var name = event.queryStringParameters.name;
-
-    // console.log('id: ${id}, type: ${typeof id}. name: ${name}, type: ${typeof name}');
     
     var params = {
         TableName: "TestCardTable",
