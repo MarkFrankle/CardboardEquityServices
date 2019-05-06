@@ -1,31 +1,28 @@
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
+
 AWS.config.update({
-    region: "us-west-2"
-})
+  region: 'us-west-2',
+});
 
-let docClient = new AWS.DynamoDB.DocumentClient();
+const docClient = new AWS.DynamoDB.DocumentClient();
 
+// eslint-disable-next-line no-unused-vars
 exports.lambdaHandler = async (event, context) => {
-    var id = event.queryStringParameters.scryfallid;
-    var name = event.queryStringParameters.name;
-    
-    var params = {
-        TableName: "TestCardTable",
-        Item: {
-            "scryfallid" : id,
-            "name" : name
-        }       
-    };
+  const id = event.queryStringParameters.scryfallid;
+  const { name } = event.queryStringParameters;
 
-    return docClient.put(params).promise()
-        .then((result) => {
-            return { statusCode: 200, body: JSON.stringify(result) };
-        }).catch(function(error) {
-            return {    statusCode: 500,
-                        error: 'Could not insert: ${error.stack}'
-                    };
-        });
+  const params = {
+    TableName: 'TestCardTable',
+    Item: {
+      scryfallid: id,
+      name,
+    },
+  };
+
+  return docClient.put(params).promise()
+    .then(result => ({ statusCode: 200, body: JSON.stringify(result) }))
+    .catch(error => ({
+      statusCode: 500,
+      error: 'Could not insert: ${error.stack}',
+    }));
 };
-
-
-
