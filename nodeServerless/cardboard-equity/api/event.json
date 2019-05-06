@@ -1,12 +1,12 @@
 {
     "body": "{}",
     "resource": "/{proxy+}",
-    "path": "/path/to/resource",
+    "path": "/cards/",
     "httpMethod": "GET",
     "isBase64Encoded": false,
     "queryStringParameters": {
-      "name": "Hour of Eternity",
-      "scryfallid": "01040ed3-4f64-4e47-8f80-3d3a339004f7"
+        "name": "FAKECARD",
+        "scryfallid": "9asdf8234jisdhfa"
     },
     "pathParameters": {
       "proxy": "/path/to/resource"
