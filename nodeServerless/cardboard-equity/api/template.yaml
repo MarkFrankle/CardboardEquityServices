@@ -1,0 +1,182 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Cardboard Equity service definition
+  
+Globals:
+  Function:
+    # 5 second timeout
+    Timeout: 5
+
+Resources:
+  # cardTable: 
+    # Type: AWS::DynamoDB::Table
+    # Properties: 
+    #   AttributeDefinitions: 
+    #     AttributeName: "object": "card",
+    #     AttributeType: "S"
+    #     AttributeName: "id": "e7965cc5-70b8-4c43-8f93-a1731e00f52a",
+    #     AttributeType: "S"
+    #     AttributeName: "oracle_id": "de672a4b-07eb-4be8-a03f-23dfbb7ac0fa",
+    #     # "multiverse_ids": [],
+    #     AttributeType: "S"
+    #     AttributeName: "mtgo_id": 37594,
+    #     AttributeType: "N"
+    #     AttributeName: "name": "Ancient Hellkite",
+    #     AttributeType: "S"
+    #     AttributeName: "lang": "en",
+    #     AttributeType: "S"
+    #     AttributeName: "released_at": "2010-11-04",
+    #     AttributeType: "S"
+    #     AttributeName: "uri": "https://api.scryfall.com/cards/e7965cc5-70b8-4c43-8f93-a1731e00f52a",
+    #     AttributeType: "S"
+    #     AttributeName: "scryfall_uri": "https://scryfall.com/card/prm/37594/ancient-hellkite?utm_source=api",
+    #     AttributeType: "S"
+    #     AttributeName: "layout": "normal",
+    #     AttributeType: "S"
+    #     AttributeName: "highres_image": false,
+    #     AttributeType: "S"
+    #     # "image_uris": {
+    #     #     "small": "https://img.scryfall.com/cards/small/en/prm/37594.jpg?1517813031",
+    #     #     "normal": "https://img.scryfall.com/cards/normal/en/prm/37594.jpg?1517813031",
+    #     #     "large": "https://img.scryfall.com/cards/large/en/prm/37594.jpg?1517813031",
+    #     #     "png": "https://img.scryfall.com/cards/png/en/prm/37594.png?1517813031",
+    #     #     "art_crop": "https://img.scryfall.com/cards/art_crop/en/prm/37594.jpg?1517813031",
+    #     #     "border_crop": "https://img.scryfall.com/cards/border_crop/en/prm/37594.jpg?1517813031"
+    #     # },
+    #     AttributeName: "mana_cost": "{4}{R}{R}{R}",
+    #     AttributeType: "S"
+    #     AttributeName: "cmc": 7,
+    #     AttributeType: "N"
+    #     AttributeName: "type_line": "Creature — Dragon",
+    #     AttributeType: "S"
+    #     AttributeName: "oracle_text": "Flying\n{R}: Ancient Hellkite deals 1 damage to target creature defending player controls. Activate this ability only if Ancient Hellkite is attacking.",
+    #     AttributeType: "S"
+    #     AttributeName: "power": "6",
+    #     AttributeType: "N"
+    #     AttributeName: "toughness": "6",
+    #     AttributeType: "N"
+    #     # AttributeName: "colors": [
+    #     #     "R"
+    #     # ],
+    #     # "color_identity": [
+    #     #     "R"
+    #     # ],
+    #     # "legalities": {
+    #     #     "standard": "not_legal",
+    #     #     "future": "not_legal",
+    #     #     "frontier": "not_legal",
+    #     #     "modern": "legal",
+    #     #     "legacy": "legal",
+    #     #     "pauper": "not_legal",
+    #     #     "vintage": "legal",
+    #     #     "penny": "legal",
+    #     #     "commander": "legal",
+    #     #     "duel": "legal",
+    #     #     "oldschool": "not_legal"
+    #     # },
+    #     # "games": [
+    #     #     "mtgo"
+    #     # ],
+    #     AttributeName: "reserved": false,
+    #     AttributeType: "B"
+    #     AttributeName: "foil": true,
+    #     AttributeType: "B"
+    #     AttributeName: "nonfoil": false,
+    #     AttributeType: "B"
+    #     AttributeName: "oversized": false,
+    #     AttributeType: "B"
+    #     AttributeName: "promo": true,
+    #     AttributeType: "B"
+    #     AttributeName: "reprint": true,
+    #     AttributeType: "B"
+    #     AttributeName: "set": "prm",
+    #     AttributeType: "S"
+    #     AttributeName: "set_name": "Magic Online Promos",
+    #     AttributeType: "S"
+    #     AttributeName: "set_uri": "https://api.scryfall.com/sets/638940fb-6be9-4be3-b83f-68d3902fbbe5",
+    #     AttributeType: "S"
+    #     AttributeName: "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Aprm&unique=prints",
+    #     AttributeType: "S"
+    #     AttributeName: "scryfall_set_uri": "https://scryfall.com/sets/prm?utm_source=api",
+    #     AttributeType: "S"
+    #     AttributeName: "rulings_uri": "https://api.scryfall.com/cards/e7965cc5-70b8-4c43-8f93-a1731e00f52a/rulings",
+    #     AttributeType: "S"
+    #     AttributeName: "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3Ade672a4b-07eb-4be8-a03f-23dfbb7ac0fa&unique=prints",
+    #     AttributeType: "S"
+    #     AttributeName: "collector_number": "37594",
+    #     AttributeType: "N"
+    #     AttributeName: "digital": true,
+    #     AttributeType: "B"
+    #     AttributeName: "rarity": "rare",
+    #     AttributeType: "S"
+    #     AttributeName: "flavor_text": "When a dragon attacks, there are no bystanders.",
+    #     AttributeType: "S"
+    #     AttributeName: "illustration_id": "4417a8cd-5236-46fd-9769-bf98430b430e",
+    #     AttributeType: "S"
+    #     AttributeName: "artist": "Wayne Reynolds",
+    #     AttributeType: "S"
+    #     AttributeName: "border_color": "black",
+    #     AttributeType: "S"
+    #     AttributeName: "frame": "2003",
+    #     AttributeType: "S"
+    #     AttributeName: "full_art": false,
+    #     AttributeType: "B"
+    #     AttributeName: "story_spotlight": false,
+    #     AttributeType: "B"
+    #     AttributeName: "edhrec_rank": 7947,
+    #     AttributeType: "N"
+    #     AttributeName: "tix": "0.03",
+    #     AttributeType: "N"
+    #     # AttributeName: "prices": {
+    #     #     "usd": null,
+    #     #     "usd_foil": null,
+    #     #     "eur": null,
+    #     #     "tix": "0.03"
+    #     # },
+    #     # "related_uris": {
+    #     #     "tcgplayer_decks": "https://decks.tcgplayer.com/magic/deck/search?contains=Ancient+Hellkite&page=1&partner=Scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall",
+    #     #     "edhrec": "http://edhrec.com/route/?cc=Ancient+Hellkite",
+    #     #     "mtgtop8": "http://mtgtop8.com/search?MD_check=1&SB_check=1&cards=Ancient+Hellkite"
+    #     # },
+    #     # "purchase_uris": {
+    #     #     "tcgplayer": "https://shop.tcgplayer.com/productcatalog/product/show?ProductName=Ancient+Hellkite&partner=Scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall",
+    #     #     "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Ancient+Hellkite&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+    #     #     "cardhoarder": "https://www.cardhoarder.com/cards/37594?affiliate_id=scryfall&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+    #     # }
+    #   KeySchema: 
+    #       AttributeName: "id"
+    #       KeyType: "HASH"
+    #       AttributeName: "name"
+    #       KeyType: "RANGE"
+    #   ProvisionedThroughput: 
+    #     ReadCapacityUnits: "5"
+    #     WriteCapacityUnits: "5"
+    #   TableName: "MagicCards"
+    #   # GlobalSecondaryIndexes:- In case I want later 
+    #   # LocalSecondaryIndexes: - In case I want later
+  cardGet:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: cards
+      Handler: get.lambdaHandler
+      Runtime: nodejs8.10
+      Events:
+        cardboard-equity:
+          Type: Api 
+          Properties:
+            Path: /cards
+            Method: get
+  cardPost:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: cards
+      Handler: post.lambdaHandler
+      Runtime: nodejs8.10
+      Events:
+        cardboard-equity:
+          Type: Api 
+          Properties:
+            Path: /cards
+            Method: post
+
